@@ -185,3 +185,49 @@ body{
             
      }
   }
+
+  .full-width {
+    width: 100%;
+  } 
+
+  .list-group{
+    border-radius: none;
+  }
+
+
+
+
+  .feature-section {
+    padding: 40px 0;
+  }
+  .feature-section h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+  .feature-box {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s;
+  }
+  .feature-box:hover {
+    transform: translateY(-5px);
+  }
+  .feature-box h3 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .feature-box ul {
+    list-style: none;
+    padding: 0;
+  }
+  .feature-box ul li {
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+  .feature-box ul li:last-child {
+    border-bottom: none;
+  }
+
+  
