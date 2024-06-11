@@ -1,0 +1,64 @@
+body {
+    background-color: #081E33;
+}
+
+.tamaño {
+    font-size: 90px; /* Tamaño de los iconos aumentado */
+}
+
+.contenedor {
+    padding: 50px;
+    background-image: url(../svg/fonod-card.svg);
+    background-size: cover;
+    text-align: center; /* Centrar los iconos dentro del contenedor */
+}
+
+.boton {
+    width: 200px; /* Ancho fijo para cada botón */
+    margin: 10px; /* Espacio entre botones */
+    text-align: center; /* Centrar el texto */
+}
+
+.logo {
+    padding-left: 20px;
+    padding-top: 20px;
+    max-width: 100%;
+    height: auto;
+}
+
+.botones {
+    margin-top: 50px;
+    gap: 20px;
+    justify-content: center;
+}
+
+/* Media Queries para responsividad */
+@media (max-width: 768px) {
+    .botones {
+        flex-direction: column; /* Disposición en columna para pantallas pequeñas */
+        align-items: center; /* Centrar los botones en pantalla pequeña */
+    }
+
+    .contenedor {
+        width: 100%; /* Asegurar que los contenedores ocupen todo el ancho */
+        padding: 20px;
+    }
+
+    .tamaño {
+        font-size: 100px; /* Reducir tamaño de iconos en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 576px) {
+    .tamaño {
+        font-size: 80px; /* Reducir aún más tamaño de iconos en pantallas muy pequeñas */
+    }
+
+    .contenedor {
+        padding: 10px;
+    }
+
+    .boton {
+        width: 100%; /* Asegurar que los botones ocupen todo el ancho en pantallas muy pequeñas */
+    }
+}
