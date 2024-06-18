@@ -18,11 +18,11 @@ public class usuarioServlet extends HttpServlet {
         String nombre = req.getParameter("nombre");
         String contra = req.getParameter("contra");
         usuarioDao dao = new usuarioDao();
-       // usuarioDao usr = dao.getOne(nombre,contra);
+       usuario usr = dao.getOne(nombre,contra);
         // si el usuario esta vacío,
-        if (dao.getOne(nombre,contra) == null) {
+        if (usr.getNombre() == null) {
             // es porque no existe en la bd
-            System.out.println("El usuario " + nombre + "no existe en la base de datos");
+            System.out.println("El usuario " + nombre + " no existe en la base de datos");
         }else{
             // si existe en la bd
             System.out.println("El usuario " + nombre + " si esta en la base de datos");
