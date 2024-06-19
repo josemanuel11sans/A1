@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificaciones</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a2b3c;
+            color: white;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .sidebar {
+            background-color: #0d4d4d;
+            width: 60px;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+        }
+        .sidebar img {
+            width: 40px;
+            margin: 10px;
+            display: block;
+        }
+        .container {
+            margin-left: 60px;
+            padding: 20px;
+            width: calc(100% - 60px);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .filters {
+            margin-bottom: 20px;
+        }
+        .filters select {
+            padding: 5px;
+            margin-right: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            color: #333;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .status-green {
+            color: green;
+            font-size: 24px;
+        }
+        .status-red {
+            color: red;
+            font-size: 24px;
+        }
+        .grade {
+            background-color: #e0e0e0;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        .pagination {
+            text-align: center;
+        }
+        .pagination button {
+            margin: 0 5px;
+            padding: 5px 10px;
+            background-color: #0d4d4d;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .pagination button.active {
+            background-color: #25884b;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <img src="logo.png" alt="Logo">
+        <img src="Estrel.png" alt="Estrella">
+    </div>
+    <div class="container">
+        <h1>Calificaciones</h1>
+        <div class="filters">
+            <select>
+                <option>Calificación...</option>
+            </select>
+        </div>
+        <table id="studentsTable">
+            <thead>
+                <tr>
+                    <th>Folio</th>
+                    <th>Nombre</th>
+                    <th>Carrera</th>
+                    <th>Estado</th>
+                    <th>Calificación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- La tabla se llenará con JavaScript -->
+            </tbody>
+        </table>
+        <div class="pagination" id="pagination">
+            <!-- Los botones de paginación se generarán con JavaScript -->
+        </div>
+    </div>
+
+    <script>
+        // Datos de ejemplo (simulando una base de datos)
+        const allStudents = [
+            { folio: "B5366", nombre: "Angel Luis Ortega Chavez", carrera: "TICS", estado: true, calificacion: 10 },
+            { folio: "B5367", nombre: "Juan Manuel Martinez Guzman", carrera: "TICS", estado: true, calificacion: 10 },
+            { folio: "B5368", nombre: "Orlando Ruiz Cardenas", carrera: "TICS", estado: false, calificacion: null },
+            { folio: "B5369", nombre: "Luis Manuel Villanueva Miranda", carrera: "TICS", estado: true, calificacion: 9 },
+            { folio: "B5371", nombre: "Jesus Garcia Cardenas", carrera: "TICS", estado: false, calificacion: null },
+            { folio: "B5372", nombre: "Juan Jose Cardenas Zapata", carrera: "TICS", estado: true, calificacion: 10 },
+            { folio: "B5373", nombre: "María Fernanda López Gómez", carrera: "Arquitectura", estado: true, calificacion: 8 },
+            { folio: "B5374", nombre: "Pedro Martínez Sánchez", carrera: "Derecho", estado: true, calificacion: 7 },
+            { folio: "B5375", nombre: "Ana González Pérez", carrera: "Medicina", estado: false, calificacion: null },
+            { folio: "B5376", nombre: "Jorge Ramírez Reyes", carrera: "Economía", estado: true, calificacion: 9 },
+            { folio: "B5377", nombre: "Luisa Torres Hernández", carrera: "Biología", estado: false, calificacion: null },
+            { folio: "B5378", nombre: "Rosa Mendoza López", carrera: "Historia", estado: true, calificacion: 10 },
+            { folio: "B5379", nombre: "Carlos López Jiménez", carrera: "Derecho", estado: true, calificacion: 8 },
+            { folio: "B5380", nombre: "Laura Ramírez Gutiérrez", carrera: "Medicina", estado: false, calificacion: null },
+            { folio: "B5381", nombre: "Roberto González Pérez", carrera: "Arquitectura", estado: true, calificacion: 9 },
+            { folio: "B5382", nombre: "María Fernández Martínez", carrera: "TICS", estado: true, calificacion: 7 },
+            { folio: "B5383", nombre: "Juan Carlos Rodríguez Ruiz", carrera: "Economía", estado: false, calificacion: null },
+            { folio: "B5384", nombre: "Ana María Sánchez López", carrera: "Biología", estado: true, calificacion: 10 },
+            { folio: "B5385", nombre: "Sofía Pérez Gómez", carrera: "Historia", estado: true, calificacion: 8 }
+            // Más estudiantes pueden ser añadidos aquí para más páginas...
+        ];
+
+        const studentsPerPage = 6;
+        let currentPage = 1;
+
+        function displayStudents(page) {
+            const tableBody = document.querySelector("#studentsTable tbody");
+            tableBody.innerHTML = "";
+
+            const start = (page - 1) * studentsPerPage;
+            const end = start + studentsPerPage;
+            const paginatedStudents = allStudents.slice(start, end);
+
+            paginatedStudents.forEach(student => {
+                const row = tableBody.insertRow();
+                row.insertCell(0).textContent = student.folio;
+                row.insertCell(1).textContent = student.nombre;
+                row.insertCell(2).textContent = student.carrera;
+                
+                const estadoCell = row.insertCell(3);
+                estadoCell.textContent = "•";
+                estadoCell.className = student.estado ? "status-green" : "status-red";
+                
+                const calificacionCell = row.insertCell(4);
+                const calificacionSpan = document.createElement("span");
+                calificacionSpan.className = "grade";
+                calificacionSpan.textContent = student.calificacion !== null ? student.calificacion : "-";
+                calificacionCell.appendChild(calificacionSpan);
+            });
+
+            updatePagination();
+        }
+
+        function updatePagination() {
+            const paginationDiv = document.getElementById("pagination");
+            paginationDiv.innerHTML = "";
+
+            const totalPages = Math.ceil(allStudents.length / studentsPerPage);
+
+            for (let i = 1; i <= totalPages; i++) {
+                const button = document.createElement("button");
+                button.textContent = i;
+                button.addEventListener("click", () => {
+                    currentPage = i;
+                    displayStudents(currentPage);
+                });
+
+                if (i === currentPage) {
+                    button.classList.add("active");
+                }
+
+                paginationDiv.appendChild(button);
+            }
+        }
+
+        // Inicializar la visualización
+        displayStudents(currentPage);
+    </script>
+</body>
+</html>
