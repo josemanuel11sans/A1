@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consultar Carrera</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #1a2b3c;
+            color: white;
+            margin: 0;
+            display: flex;
+        }
+        .sidebar {
+            background-color: #0d4d4d;
+            width: 80px;
+            height: 100vh;
+            position: fixed;
+            padding-top: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .sidebar img {
+            width: 40px;
+            margin: 20px 0;
+        }
+        .container {
+            margin-left: 80px;
+            padding: 20px;
+            width: calc(100% - 80px);
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        .filters {
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .filters input, .filters select {
+            padding: 10px;
+            background-color: #3C5066;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        .filters button {
+            padding: 10px;
+            background-color: #0d4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: #ffffff;
+            color: #333;
+            margin-top: 20px;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .edit-btn {
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            gap: 5px;
+        }
+        .pagination button {
+            padding: 5px 10px;
+            background-color: #0d4d4d;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .pagination button.active {
+            background-color: #0d4d4d;
+        }
+    </style>
+</head>
+<body>
+<div class="sidebar">
+    <img src="df.png" alt="Logos que no me acuerdo como se llaman">
+    <img src="d.png" alt="Manu, sube los iconooos">
+    <img src="afn.png" alt="Iconos">
+
+</div>
+<div class="container">
+    <h1>Consultar Carrera</h1>
+    <div class="filters">
+        <input type="text" placeholder="Nombre">
+        <select>
+            <option>División</option>
+        </select>
+        <button>Agregar carrera</button>
+    </div>
+    <table>
+        <thead>
+        <tr>
+            <th>Nombre de la carrera</th>
+            <th>División académica</th>
+            <th>Editar</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+    <div class="pagination" id="pagination">
+
+    </div>
+</div>
+
+<script>
+
+    const careers = [
+        { nombre: "ING. Desarrollo de software multiplataforma", division: "DATID" },
+        { nombre: "ING. Infraestructura de Redes Digitales", division: "DATID" },
+        { nombre: "ING. Diseño Digital", division: "DATID" },
+        { nombre: "ING. Procesos Industriales", division: "DAMI" },
+        { nombre: "ING. Nanotecnología", division: "DAMI" },
+        { nombre: "ING. Mecatrónica", division: "DAMI" },
+
+    ];
+
+    const careersPerPage = 5;
+    let currentPage = 1;
+
+    function displayCareers(page) {
+        const tableBody = document.querySelector("table tbody");
+        tableBody.innerHTML = "";
+
+        const start = (page - 1) * careersPerPage;
+        const end = start + careersPerPage;
+        const paginatedCareers = careers.slice(start, end);
+
+        paginatedCareers.forEach(career => {
+            const row = tableBody.insertRow();
+            row.insertCell(0).textContent = career.nombre;
+            row.insertCell(1).textContent = career.division;
+
+            const editCell = row.insertCell(2);
+            const editButton = document.createElement("button");
+            editButton.textContent = "Editar";
+            editButton.className = "edit-btn";
+            editButton.addEventListener("click", () => {
+                alert(`Editar ${career.nombre}`);
+            });
+            editCell.appendChild(editButton);
+        });
+
+        updatePagination();
+    }
+
+    function updatePagination() {
+        const paginationDiv = document.getElementById("pagination");
+        paginationDiv.innerHTML = "";
+
+        const totalPages = Math.ceil(careers.length / careersPerPage);
+
+        for (let i = 1; i <= totalPages; i++) {
+            const button = document.createElement("button");
+            button.textContent = i;
+            button.addEventListener("click", () => {
+                currentPage = i;
+                displayCareers(currentPage);
+            });
+
+            if (i === currentPage) {
+                button.classList.add("active");
+            }
+
+            paginationDiv.appendChild(button);
+        }
+    }
+
+
+    displayCareers(currentPage);
+</script>
+</body>
+</html>
