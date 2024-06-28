@@ -197,8 +197,12 @@ a.sidebar-link:hover {
 
 /*Icononos dentro de la tabla*/
 .btnIcono {
-    background-color: #107863;
+    background-color: #081E33;
     color: white;
+}
+.btnIcono:hover {
+    background-color: #ffffff;
+    color:#107863;
 }
 
 
@@ -479,4 +483,22 @@ a.sidebar-link:hover {
 
 .text-left {
     text-align: left;
+}
+
+
+/* estilos para ver o no ver la contraseña en los imputs */
+.boton {
+    margin-top: 5px;
+    border: none;
+    background-color: rgba(0, 0, 0, 0);
+    color: #ffffff;
+}
+
+.input-group{
+    display: flex; 
+    justify-content: end;
+}
+.containerme{
+    display: flex;
+    justify-content: space-between;
 }
