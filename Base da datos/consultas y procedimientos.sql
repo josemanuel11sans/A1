@@ -22,7 +22,7 @@ BEGIN
     SELECT u.id_usuario, CONCAT(u.nombre, ' ', u.apellido) AS nombre_completo, u.contrasena, u.mail, e.estado
 	FROM usuarios u
 	INNER JOIN estado e ON e.id_estado = u.id_estado
-	WHERE u.id_rol = new_id_rol
+	WHERE u.id_rol = new_id_rolusuarios
 	GROUP BY u.id_usuario
 	ORDER BY u.id_usuario ASC;
 END //

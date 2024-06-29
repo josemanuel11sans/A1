@@ -58,3 +58,66 @@ INSERT INTO usuarios (id_usuario, nombre, apellido, mail, contrasena, id_estado,
 VALUES (146, 'Roberto', 'Castro', 'roberto.castro@example.com', 'password19', 1, 1, NULL, NULL);
 INSERT INTO usuarios (id_usuario, nombre, apellido, mail, contrasena, id_estado, id_rol, asistencias_id_asistencia, grupos_id_grupo) 
 VALUES (147, 'Carolina', 'Silva', 'carolina.silva@example.com', 'password20', 2, 2, NULL, NULL);
+
+
+-- DIVICIONES ACADEMICAS
+INSERT INTO `tricks`.`divisiones_academicas` (`id_division`, `nombre_division`, `coordinador_division`, `siglas`) VALUES ('12', 'División Académica de Tecnologías de la Información y Diseño', 'Dra. Martha Fabiola Wences Díaz', 'DATID');
+INSERT INTO `tricks`.`divisiones_academicas` (`id_division`, `nombre_division`, `coordinador_division`, `siglas`) VALUES ('13', 'División Académica de Mecánica Industrial', 'M. en C. Jaime Vázquez Colín', 'DAMI');
+INSERT INTO `tricks`.`divisiones_academicas` (`id_division`, `nombre_division`, `coordinador_division`, `siglas`) VALUES ('14', 'División Académica Económica-Administrativa', 'M.C.C.I. Jonathan Espinoza Mendoza', 'DACEA');
+INSERT INTO `tricks`.`divisiones_academicas` (`nombre_division`, `coordinador_division`, `siglas`) VALUES ('División Académica de Terapia Física', 'M.M.F. y R. Dennice Jaqueline García Mendoza', 'DATEFI');
+
+-- carreras INSERT INTO `tricks`.`carreras` (`id_carrera`, `nombre_carrera`, `divisiones_academicas_id_division`) VALUES ('1', 'Gestión del Capital Humano', '14');
+INSERT INTO `tricks`.`carreras` (`id_carrera`, `nombre_carrera`, `divisiones_academicas_id_division`) VALUES ('2', 'Mercadotecnia', '14');
+INSERT INTO `tricks`.`carreras` (`id_carrera`, `nombre_carrera`, `divisiones_academicas_id_division`) VALUES ('3', 'Mercadotecnia', '14');
+INSERT INTO `tricks`.`carreras` (`id_carrera`, `nombre_carrera`, `divisiones_academicas_id_division`) VALUES ('4', 'Procesos Productivos', '13');
+INSERT INTO `tricks`.`carreras` (`id_carrera`, `nombre_carrera`, `divisiones_academicas_id_division`) VALUES ('5', 'Automatización', '13');
+INSERT INTO `tricks`.`carreras` (`id_carrera`, `nombre_carrera`, `divisiones_academicas_id_division`) VALUES ('6', 'Mantenimiento Industrial', '13');
+INSERT INTO `tricks`.`carreras` (`id_carrera`, `nombre_carrera`, `divisiones_academicas_id_division`) VALUES ('7', 'Nanotecnología', '13');
+INSERT INTO `tricks`.`carreras` (`id_carrera`, `nombre_carrera`, `divisiones_academicas_id_division`) VALUES ('8', 'Gestión del Bienestar', '16');
+INSERT INTO `tricks`.`carreras` (`id_carrera`, `nombre_carrera`, `divisiones_academicas_id_division`) VALUES ('9', 'Diseño y Animación Digital', '12');
+INSERT INTO `tricks`.`carreras` (`id_carrera`, `nombre_carrera`, `divisiones_academicas_id_division`) VALUES ('10', 'Diseño y Moda Industrial en Producción', '12');
+INSERT INTO `tricks`.`carreras` (`id_carrera`, `nombre_carrera`, `divisiones_academicas_id_division`) VALUES ('11', 'Desarrollo de Software Multiplataforma', '12');
+INSERT INTO `tricks`.`carreras` (`id_carrera`, `nombre_carrera`, `divisiones_academicas_id_division`) VALUES ('12', 'Infraestructura de Redes Digitales', '12');
+
+-- aspirantes
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F001', 'Juan', 'Perez', 'CURP001', 1, '2000-01-15');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F002', 'Maria', 'Lopez', 'CURP002', 1, '1999-03-22');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F003', 'Pedro', 'Hernandez', 'CURP003', 1, '1998-07-11');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F004', 'Luisa', 'Martinez', 'CURP004', 1, '2001-05-30');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F005', 'Ana', 'Gomez', 'CURP005', 1, '2000-11-19');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F006', 'Carlos', 'Diaz', 'CURP006', 2, '1999-04-05');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F007', 'Sofia', 'Ramirez', 'CURP007', 2, '2001-08-21');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F008', 'Miguel', 'Sanchez', 'CURP008', 2, '1997-12-10');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F009', 'Laura', 'Torres', 'CURP009', 2, '1998-06-18');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F010', 'Jorge', 'Castillo', 'CURP010', 2, '2000-09-25');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F011', 'Elena', 'Mendoza', 'CURP011', 1, '1999-02-13');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F012', 'Ricardo', 'Vargas', 'CURP012', 1, '1997-11-29');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F013', 'Patricia', 'Rojas', 'CURP013', 1, '2001-03-07');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F014', 'Roberto', 'Morales', 'CURP014', 1, '1998-10-16');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F015', 'Isabel', 'Reyes', 'CURP015', 1, '1999-07-23');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F016', 'Fernando', 'Ortiz', 'CURP016', 1, '2000-12-05');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F017', 'Teresa', 'Cruz', 'CURP017', 1, '1998-09-09');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F018', 'Luis', 'Gonzalez', 'CURP018', 1, '1997-05-15');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F019', 'Monica', 'Ramos', 'CURP019', 1, '2001-02-27');
+INSERT INTO aspirante (folio_aspirante, nombre, apellido, curp, estado_id_estado, fecha_nac) VALUES
+('F020', 'Javier', 'Flores', 'CURP020', 1, '1999-08-31');
+
