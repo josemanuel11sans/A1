@@ -1,0 +1,6 @@
+id_usuario,nombre,apellido,mail,contrasena,id_estado,id_rol,asistencias_id_asistencia,grupos_id_grupo
+123,Jose,Saldaña,ejemplo1@gmial.com,admin,1,1,NULL,NULL
+124,Orlanddo,ruiz,ejemplo2@gmial.com,admin,1,1,NULL,NULL
+125,pepe,sanchez,ejemplo3@gmial.com,admin,2,1,NULL,NULL
+126,Mauro,Bahena,ejemplo4@gmial.com,maesro,1,2,NULL,NULL
+127,Sebastian,Sota,ejemplo5@gmial.com,maestro,1,3,NULL,NULL
